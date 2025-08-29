@@ -12,7 +12,9 @@ if __name__ == "__main__":
     response = extractor.run(text)
 
     print(response)
-    # Prediction(
-    #     reasoning="A story event is a pivotal moment that brings about significant change in the character's life, driven by their values and achieved through conflict.",
-    #     keywords=['Story Event', 'change', 'character', 'life situation', 'value', 'conflict']
-    # )
+    # ExtractionResult(
+    #   keywords=['Story Event', 'character', 'life situation', 'value', 'conflict'],
+    #   reasoning="The text describes the concept of a Story Event, which is an event that
+    #              creates meaningful change in a character's life situation. This change is achieved
+    #              through conflict, and it is expressed and experienced in terms of a value.")
+
