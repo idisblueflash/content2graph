@@ -1,14 +1,18 @@
-import dspy
+from lm_config import configure_global_lm
+from pipeline import KeywordExtractor
 
-lm = dspy.LM("openai/gpt-oss-20b",
-             api_base="http://10.62.1.190:1234/v1",  # fixe me with a ENV KEY
-             api_key="any non-empty string",
-             temperature=0.2,
-             max_tokens=512, )
-dspy.configure(lm=lm)
-
-math = dspy.ChainOfThought("question -> answer: float")
-result = math(question="Two dice are tossed. What is the probability that the sum equals two?")
+configure_global_lm()
 
 if __name__ == "__main__":
-    print(result)
+    text = """A Story Event creates meaningful change in the life
+    situation of a character that is expressed and experi¬
+    enced in terms of a value and ACHIEVED THROUGH
+    CONFLICT."""
+    extractor = KeywordExtractor()
+    response = extractor.run(text)
+
+    print(response)
+    # Prediction(
+    #     reasoning="A story event is a pivotal moment that brings about significant change in the character's life, driven by their values and achieved through conflict.",
+    #     keywords=['Story Event', 'change', 'character', 'life situation', 'value', 'conflict']
+    # )
